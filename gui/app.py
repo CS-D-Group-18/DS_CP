@@ -11,8 +11,8 @@ from gui.report_page import ReportPage
 from gui.settings_page import SettingsPage
 # ...
 
-ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+ctk.set_appearance_mode("Light")  # Enforce Light mode for web dashboard look
+ctk.set_default_color_theme("blue")
 
 class App(ctk.CTk):
     def __init__(self):
@@ -20,7 +20,8 @@ class App(ctk.CTk):
 
         # Window configuration
         self.title("Task Scheduling System")
-        self.geometry("1100x700")
+        self.geometry("1200x800")
+        self.configure(fg_color="#f5f6f8") # Web dashboard light gray background
         
         # Backend initialization
         self.engine = SimulationEngine()

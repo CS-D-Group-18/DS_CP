@@ -14,40 +14,40 @@ class SchedulerPage(ctk.CTkFrame):
         top_frame = ctk.CTkFrame(self, fg_color="transparent")
         top_frame.grid(row=0, column=0, sticky="ew", padx=20, pady=(20, 10))
         
-        title_label = ctk.CTkLabel(top_frame, text="Scheduler Simulation", font=ctk.CTkFont(size=24, weight="bold"))
+        title_label = ctk.CTkLabel(top_frame, text="▶️ Scheduler Simulation", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
         title_label.pack(side="left")
         
         # Controls
-        controls_frame = ctk.CTkFrame(self)
-        controls_frame.grid(row=1, column=0, sticky="ew", padx=20, pady=10)
+        controls_frame = ctk.CTkFrame(self, corner_radius=15)
+        controls_frame.grid(row=1, column=0, sticky="ew", padx=30, pady=10)
         
-        ctk.CTkLabel(controls_frame, text="Select Algorithm:").pack(side="left", padx=(20, 10), pady=20)
+        ctk.CTkLabel(controls_frame, text="Select Algorithm:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(20, 10), pady=20)
         self.algo_var = ctk.StringVar(value="Priority")
         self.algo_dropdown = ctk.CTkOptionMenu(controls_frame, variable=self.algo_var, 
-                                               values=["Priority", "SJF", "EDF"])
+                                               values=["Priority", "SJF", "EDF"], font=ctk.CTkFont(weight="bold"))
         self.algo_dropdown.pack(side="left", padx=10)
         
-        self.run_btn = ctk.CTkButton(controls_frame, text="Run Simulation", command=self.run_simulation, fg_color="#2E7D32", hover_color="#1B5E20")
+        self.run_btn = ctk.CTkButton(controls_frame, text="▶ Run Simulation", height=40, font=ctk.CTkFont(weight="bold"), command=self.run_simulation, fg_color="#2ca02c", hover_color="#238223")
         self.run_btn.pack(side="left", padx=20)
         
-        self.status_lbl = ctk.CTkLabel(controls_frame, text="Status: Ready", text_color="gray")
+        self.status_lbl = ctk.CTkLabel(controls_frame, text="Status: Ready", text_color="gray", font=ctk.CTkFont(weight="bold"))
         self.status_lbl.pack(side="right", padx=20)
         
         # Main content area
-        content_frame = ctk.CTkFrame(self)
-        content_frame.grid(row=2, column=0, sticky="nsew", padx=20, pady=(0, 20))
+        content_frame = ctk.CTkFrame(self, corner_radius=15)
+        content_frame.grid(row=2, column=0, sticky="nsew", padx=30, pady=(10, 30))
         content_frame.grid_columnconfigure((0, 1), weight=1)
         content_frame.grid_rowconfigure(1, weight=1)
         
         # Log Output
-        ctk.CTkLabel(content_frame, text="Execution Log", font=ctk.CTkFont(weight="bold")).grid(row=0, column=0, padx=10, pady=(10, 0), sticky="w")
-        self.log_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled")
-        self.log_textbox.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+        ctk.CTkLabel(content_frame, text="📜 Execution Log", font=ctk.CTkFont(family="Roboto", size=16, weight="bold")).grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
+        self.log_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#1e1e1e", text_color="#d4d4d4", corner_radius=8)
+        self.log_textbox.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="nsew")
         
         # Final State
-        ctk.CTkLabel(content_frame, text="Final Task State", font=ctk.CTkFont(weight="bold")).grid(row=0, column=1, padx=10, pady=(10, 0), sticky="w")
-        self.state_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled")
-        self.state_textbox.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
+        ctk.CTkLabel(content_frame, text="🏁 Final Task State", font=ctk.CTkFont(family="Roboto", size=16, weight="bold")).grid(row=0, column=1, padx=20, pady=(20, 10), sticky="w")
+        self.state_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#1e1e1e", text_color="#d4d4d4", corner_radius=8)
+        self.state_textbox.grid(row=1, column=1, padx=20, pady=(0, 20), sticky="nsew")
 
     def run_simulation(self):
         if not self.engine.tasks:

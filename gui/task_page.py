@@ -9,8 +9,8 @@ class TaskPage(ctk.CTkFrame):
         self.nav_callback = nav_callback
         
         # Title
-        title_label = ctk.CTkLabel(self, text="Task Management", font=ctk.CTkFont(size=24, weight="bold"))
-        title_label.pack(pady=(20, 10), padx=20, anchor="w")
+        title_label = ctk.CTkLabel(self, text="📝 Task Management", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label.pack(pady=(30, 10), padx=30, anchor="w")
         
         # Tabs for Add and Manage
         self.tabview = ctk.CTkTabview(self)
@@ -26,7 +26,7 @@ class TaskPage(ctk.CTkFrame):
         # Configure grid layout for the form
         self.tab_add.grid_columnconfigure((0, 1), weight=1)
         
-        form_frame = ctk.CTkFrame(self.tab_add)
+        form_frame = ctk.CTkFrame(self.tab_add, corner_radius=15)
         form_frame.pack(pady=20, padx=50, fill="both", expand=True)
         form_frame.grid_columnconfigure(1, weight=1)
         
@@ -51,7 +51,7 @@ class TaskPage(ctk.CTkFrame):
             self.entries[key] = entry
             
         # Add Button
-        add_btn = ctk.CTkButton(form_frame, text="Add Task", command=self.add_task)
+        add_btn = ctk.CTkButton(form_frame, text="➕ Add Task", height=40, font=ctk.CTkFont(weight="bold"), command=self.add_task)
         add_btn.grid(row=len(fields), column=0, columnspan=2, pady=30)
 
     def add_task(self):
