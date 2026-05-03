@@ -14,14 +14,14 @@ class DependencyPage(ctk.CTkFrame):
         self.grid_columnconfigure(1, weight=2)
         self.grid_rowconfigure(1, weight=1)
         
-        title_label = ctk.CTkLabel(self, text="🔗 Dependency Management", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label = ctk.CTkLabel(self, text="🔗 Dependency Management", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.grid(row=0, column=0, columnspan=2, pady=(30, 10), padx=30, sticky="w")
         
         # Left Panel - Add Dependencies
         self.left_panel = ctk.CTkFrame(self, corner_radius=15)
         self.left_panel.grid(row=1, column=0, padx=(30, 10), pady=(0, 30), sticky="nsew")
         
-        ctk.CTkLabel(self.left_panel, text="➕ Add New Dependency", font=ctk.CTkFont(family="Roboto", size=18, weight="bold")).pack(pady=20)
+        ctk.CTkLabel(self.left_panel, text="➕ Add New Dependency", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827").pack(pady=20)
         
         # Dropdowns for tasks
         self.task_list = []
@@ -36,14 +36,14 @@ class DependencyPage(ctk.CTkFrame):
         self.succ_dropdown = ctk.CTkOptionMenu(self.left_panel, variable=self.succ_var, values=["Select Task"])
         self.succ_dropdown.pack(pady=5, padx=20, fill="x")
         
-        add_btn = ctk.CTkButton(self.left_panel, text="Add Dependency", height=40, fg_color="#1f538d", font=ctk.CTkFont(weight="bold"), command=self.add_dependency)
+        add_btn = ctk.CTkButton(self.left_panel, text="Add Dependency", height=42, corner_radius=8, fg_color="#4f46e5", hover_color="#4338ca", text_color="white", font=ctk.CTkFont(family="Inter", size=14, weight="bold"), command=self.add_dependency)
         add_btn.pack(pady=30, padx=20, fill="x")
 
         # Right Panel - Graph Visualization
         self.right_panel = ctk.CTkFrame(self, corner_radius=15)
         self.right_panel.grid(row=1, column=1, padx=(10, 30), pady=(0, 30), sticky="nsew")
         
-        ctk.CTkLabel(self.right_panel, text="🕸️ Dependency Graph", font=ctk.CTkFont(family="Roboto", size=18, weight="bold")).pack(pady=20)
+        ctk.CTkLabel(self.right_panel, text="🕸️ Dependency Graph", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827").pack(pady=20)
         
         # Canvas for matplotlib
         self.canvas_frame = ctk.CTkFrame(self.right_panel, fg_color="transparent")

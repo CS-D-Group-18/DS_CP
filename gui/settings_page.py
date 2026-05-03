@@ -9,14 +9,14 @@ class SettingsPage(ctk.CTkFrame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(2, weight=1)
         
-        title_label = ctk.CTkLabel(self, text="⚙️ Settings & About", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label = ctk.CTkLabel(self, text="⚙️ Settings & About", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.grid(row=0, column=0, pady=(30, 10), padx=30, sticky="w")
         
         # Appearance Settings
         settings_frame = ctk.CTkFrame(self, corner_radius=15)
         settings_frame.grid(row=1, column=0, sticky="ew", padx=30, pady=10)
         
-        ctk.CTkLabel(settings_frame, text="🎨 Appearance", font=ctk.CTkFont(family="Roboto", size=18, weight="bold")).pack(pady=15, padx=20, anchor="w")
+        ctk.CTkLabel(settings_frame, text="🎨 Appearance", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827").pack(pady=15, padx=20, anchor="w")
         
         theme_frame = ctk.CTkFrame(settings_frame, fg_color="transparent")
         theme_frame.pack(fill="x", padx=20, pady=10)
@@ -31,7 +31,7 @@ class SettingsPage(ctk.CTkFrame):
         about_frame = ctk.CTkFrame(self, corner_radius=15)
         about_frame.grid(row=2, column=0, sticky="nsew", padx=30, pady=20)
         
-        ctk.CTkLabel(about_frame, text="ℹ️ About the Project", font=ctk.CTkFont(family="Roboto", size=18, weight="bold")).pack(pady=15, padx=20, anchor="w")
+        ctk.CTkLabel(about_frame, text="ℹ️ About the Project", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827").pack(pady=15, padx=20, anchor="w")
         
         about_text = (
             "Task Scheduling System Simulator v1.0\n\n"
@@ -48,8 +48,8 @@ class SettingsPage(ctk.CTkFrame):
         ctk.CTkLabel(about_frame, text=about_text, justify="left").pack(pady=10, padx=20, anchor="w")
         
         # Team Members Placeholder
-        ctk.CTkLabel(about_frame, text="👨‍💻 Team Members", font=ctk.CTkFont(family="Roboto", size=16, weight="bold")).pack(pady=(20, 5), padx=20, anchor="w")
-        ctk.CTkLabel(about_frame, text="- Member 1\n- Member 2\n- Member 3", justify="left").pack(padx=30, anchor="w")
+        ctk.CTkLabel(about_frame, text="👨‍💻 Team Members", font=ctk.CTkFont(family="Inter", size=16, weight="bold"), text_color="#111827").pack(pady=(20, 5), padx=20, anchor="w")
+        ctk.CTkLabel(about_frame, text="- Member 1\n- Member 2\n- Member 3", justify="left", font=ctk.CTkFont(family="Inter")).pack(padx=30, anchor="w")
 
     def change_theme(self, new_appearance_mode: str):
         ctk.set_appearance_mode(new_appearance_mode)

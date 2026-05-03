@@ -14,23 +14,23 @@ class SchedulerPage(ctk.CTkFrame):
         top_frame = ctk.CTkFrame(self, fg_color="transparent")
         top_frame.grid(row=0, column=0, sticky="ew", padx=20, pady=(20, 10))
         
-        title_label = ctk.CTkLabel(top_frame, text="▶️ Scheduler Simulation", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label = ctk.CTkLabel(top_frame, text="▶️ Scheduler Simulation", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.pack(side="left")
         
         # Controls
         controls_frame = ctk.CTkFrame(self, corner_radius=15)
         controls_frame.grid(row=1, column=0, sticky="ew", padx=30, pady=10)
         
-        ctk.CTkLabel(controls_frame, text="Select Algorithm:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(20, 10), pady=20)
+        ctk.CTkLabel(controls_frame, text="Select Algorithm:", font=ctk.CTkFont(family="Inter", size=14, weight="bold"), text_color="#374151").pack(side="left", padx=(20, 10), pady=20)
         self.algo_var = ctk.StringVar(value="Priority")
         self.algo_dropdown = ctk.CTkOptionMenu(controls_frame, variable=self.algo_var, 
-                                               values=["Priority", "SJF", "EDF"], font=ctk.CTkFont(weight="bold"))
+                                               values=["Priority", "SJF", "EDF"], font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#f3f4f6", text_color="#111827", button_color="#e5e7eb", button_hover_color="#d1d5db", dropdown_fg_color="#ffffff", dropdown_text_color="#111827")
         self.algo_dropdown.pack(side="left", padx=10)
         
-        self.run_btn = ctk.CTkButton(controls_frame, text="▶ Run Simulation", height=40, font=ctk.CTkFont(weight="bold"), command=self.run_simulation, fg_color="#2ca02c", hover_color="#238223")
+        self.run_btn = ctk.CTkButton(controls_frame, text="▶ Run Simulation", height=42, corner_radius=8, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), command=self.run_simulation, fg_color="#4f46e5", hover_color="#4338ca", text_color="white")
         self.run_btn.pack(side="left", padx=20)
         
-        self.status_lbl = ctk.CTkLabel(controls_frame, text="Status: Ready", text_color="gray", font=ctk.CTkFont(weight="bold"))
+        self.status_lbl = ctk.CTkLabel(controls_frame, text="Status: Ready", text_color="#6b7280", font=ctk.CTkFont(family="Inter", weight="bold"))
         self.status_lbl.pack(side="right", padx=20)
         
         # Main content area
@@ -40,13 +40,13 @@ class SchedulerPage(ctk.CTkFrame):
         content_frame.grid_rowconfigure(1, weight=1)
         
         # Log Output
-        ctk.CTkLabel(content_frame, text="📜 Execution Log", font=ctk.CTkFont(family="Roboto", size=16, weight="bold")).grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
-        self.log_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#1e1e1e", text_color="#d4d4d4", corner_radius=8)
+        ctk.CTkLabel(content_frame, text="📜 Execution Log", font=ctk.CTkFont(family="Inter", size=16, weight="bold"), text_color="#111827").grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
+        self.log_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#111827", text_color="#e5e7eb", corner_radius=8)
         self.log_textbox.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="nsew")
         
         # Final State
-        ctk.CTkLabel(content_frame, text="🏁 Final Task State", font=ctk.CTkFont(family="Roboto", size=16, weight="bold")).grid(row=0, column=1, padx=20, pady=(20, 10), sticky="w")
-        self.state_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#1e1e1e", text_color="#d4d4d4", corner_radius=8)
+        ctk.CTkLabel(content_frame, text="🏁 Final Task State", font=ctk.CTkFont(family="Inter", size=16, weight="bold"), text_color="#111827").grid(row=0, column=1, padx=20, pady=(20, 10), sticky="w")
+        self.state_textbox = ctk.CTkTextbox(content_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#111827", text_color="#e5e7eb", corner_radius=8)
         self.state_textbox.grid(row=1, column=1, padx=20, pady=(0, 20), sticky="nsew")
 
     def run_simulation(self):
@@ -63,7 +63,7 @@ class SchedulerPage(ctk.CTkFrame):
             # Real-time visualization would require a separate thread or step-by-step logic.
             self.engine.run(algo)
             
-            self.status_lbl.configure(text=f"Status: Completed (Time: {self.engine.current_time})", text_color="green")
+            self.status_lbl.configure(text=f"Status: Completed (Time: {self.engine.current_time})", text_color="#10b981") # Emerald
             self.refresh_displays()
             messagebox.showinfo("Success", "Simulation completed successfully.")
             

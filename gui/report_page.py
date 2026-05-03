@@ -20,10 +20,10 @@ class ReportPage(ctk.CTkScrollableFrame):
         header_frame = ctk.CTkFrame(self, fg_color="transparent")
         header_frame.grid(row=0, column=0, columnspan=2, sticky="ew", padx=20, pady=20)
         
-        title_label = ctk.CTkLabel(header_frame, text="Reports Overview", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#1e2022")
+        title_label = ctk.CTkLabel(header_frame, text="Reports Overview", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.pack(side="left")
         
-        export_btn = ctk.CTkButton(header_frame, text="💾 Export Summary", fg_color="#1f538d", hover_color="#14375e", font=ctk.CTkFont(weight="bold"), command=self.export_report)
+        export_btn = ctk.CTkButton(header_frame, text="💾 Export Summary", fg_color="#4f46e5", hover_color="#4338ca", text_color="white", corner_radius=8, height=42, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), command=self.export_report)
         export_btn.pack(side="right")
         
         # Stats summary frame

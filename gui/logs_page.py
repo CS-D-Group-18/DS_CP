@@ -9,15 +9,15 @@ class LogsPage(ctk.CTkFrame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
         
-        title_label = ctk.CTkLabel(self, text="📜 Execution Logs", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label = ctk.CTkLabel(self, text="📜 Execution Logs", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.grid(row=0, column=0, pady=(30, 10), padx=30, sticky="w")
         
-        self.log_textbox = ctk.CTkTextbox(self, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=14), fg_color="#1e1e1e", text_color="#d4d4d4", corner_radius=10)
+        self.log_textbox = ctk.CTkTextbox(self, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=14), fg_color="#111827", text_color="#e5e7eb", corner_radius=10)
         self.log_textbox.grid(row=1, column=0, padx=30, pady=(0, 30), sticky="nsew")
         
-        self.log_textbox.tag_config("running", foreground="#569cd6") # VSCode Blue
-        self.log_textbox.tag_config("completed", foreground="#4ec9b0") # VSCode Green
-        self.log_textbox.tag_config("waiting", foreground="#ce9178") # VSCode Orange/Red
+        self.log_textbox.tag_config("running", foreground="#60a5fa") # Blue
+        self.log_textbox.tag_config("completed", foreground="#34d399") # Green
+        self.log_textbox.tag_config("waiting", foreground="#fbbf24") # Yellow
 
     def update_data(self):
         self.log_textbox.configure(state="normal")

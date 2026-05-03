@@ -29,47 +29,51 @@ class DashboardPage(ctk.CTkFrame):
         self.stats_frame.grid(row=2, column=0, columnspan=4, sticky="new", padx=20)
         self.stats_frame.grid_columnconfigure((0, 1, 2, 3), weight=1)
         
-        # Cards (Ahrefs style: white card, thin grey border, subtle numbers)
-        self.total_card = self.create_stat_card(self.stats_frame, "Total Tasks", "0", 0, "#1f538d")
-        self.pending_card = self.create_stat_card(self.stats_frame, "Pending Tasks", "0", 1, "#e67e22")
-        self.completed_card = self.create_stat_card(self.stats_frame, "Completed Tasks", "0", 2, "#27ae60")
-        self.cpu_card = self.create_stat_card(self.stats_frame, "Total Time", "0", 3, "#8e44ad")
+        # Cards (SaaS style: rounded corners, icons, large numbers)
+        self.total_card = self.create_stat_card(self.stats_frame, "📋 Total Tasks", "0", 0, "#3b82f6") # Blue
+        self.pending_card = self.create_stat_card(self.stats_frame, "⏳ Pending", "0", 1, "#f59e0b") # Amber
+        self.completed_card = self.create_stat_card(self.stats_frame, "✅ Completed", "0", 2, "#10b981") # Emerald
+        self.cpu_card = self.create_stat_card(self.stats_frame, "⏱️ Total Time", "0", 3, "#8b5cf6") # Violet
 
         # Quick Actions
-        self.actions_frame = ctk.CTkFrame(self, fg_color="white", corner_radius=6, border_width=1, border_color="#e0e0e0")
+        self.actions_frame = ctk.CTkFrame(self, fg_color="white", corner_radius=12, border_width=1, border_color="#e5e7eb")
         self.actions_frame.grid(row=3, column=0, columnspan=2, sticky="nsew", padx=(30, 10), pady=20)
         
-        actions_label = ctk.CTkLabel(self.actions_frame, text="Quick Actions", font=ctk.CTkFont(family="Inter", size=16, weight="bold"), text_color="#1e2022")
-        actions_label.pack(pady=15, padx=20, anchor="w")
+        actions_label = ctk.CTkLabel(self.actions_frame, text="Quick Actions", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827")
+        actions_label.pack(pady=(20, 15), padx=25, anchor="w")
         
-        ctk.CTkButton(self.actions_frame, text="Add New Task", height=35, corner_radius=4, font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#f8f9fa", text_color="#1f538d", hover_color="#e9ecef", border_width=1, border_color="#d0d5dd", command=lambda: self.nav_callback("tasks")).pack(pady=8, padx=20, fill="x")
-        ctk.CTkButton(self.actions_frame, text="Add Dependency", height=35, corner_radius=4, font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#f8f9fa", text_color="#1f538d", hover_color="#e9ecef", border_width=1, border_color="#d0d5dd", command=lambda: self.nav_callback("dependencies")).pack(pady=8, padx=20, fill="x")
-        ctk.CTkButton(self.actions_frame, text="Run Scheduler", height=35, corner_radius=4, font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#ff7f0e", text_color="white", hover_color="#e67300", command=lambda: self.nav_callback("scheduler")).pack(pady=8, padx=20, fill="x")
-        ctk.CTkButton(self.actions_frame, text="🚀 Load Demo Data", height=35, corner_radius=4, font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#27ae60", text_color="white", hover_color="#219653", command=self.load_demo_data).pack(pady=8, padx=20, fill="x")
+        ctk.CTkButton(self.actions_frame, text="➕ Add New Task", height=42, corner_radius=8, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), fg_color="#f3f4f6", text_color="#374151", hover_color="#e5e7eb", command=lambda: self.nav_callback("tasks")).pack(pady=8, padx=25, fill="x")
+        ctk.CTkButton(self.actions_frame, text="🔗 Add Dependency", height=42, corner_radius=8, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), fg_color="#f3f4f6", text_color="#374151", hover_color="#e5e7eb", command=lambda: self.nav_callback("dependencies")).pack(pady=8, padx=25, fill="x")
+        ctk.CTkButton(self.actions_frame, text="▶ Run Scheduler", height=46, corner_radius=8, font=ctk.CTkFont(family="Inter", size=15, weight="bold"), fg_color="#4f46e5", text_color="white", hover_color="#4338ca", command=lambda: self.nav_callback("scheduler")).pack(pady=(15, 8), padx=25, fill="x")
+        ctk.CTkButton(self.actions_frame, text="🚀 Load Demo Data", height=42, corner_radius=8, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), fg_color="#10b981", text_color="white", hover_color="#059669", command=self.load_demo_data).pack(pady=8, padx=25, fill="x")
 
         # Recent Logs (Preview)
-        self.logs_frame = ctk.CTkFrame(self, fg_color="white", corner_radius=6, border_width=1, border_color="#e0e0e0")
+        self.logs_frame = ctk.CTkFrame(self, fg_color="white", corner_radius=12, border_width=1, border_color="#e5e7eb")
         self.logs_frame.grid(row=3, column=2, columnspan=2, sticky="nsew", padx=(10, 30), pady=20)
         
-        logs_label = ctk.CTkLabel(self.logs_frame, text="Execution Logs", font=ctk.CTkFont(family="Inter", size=16, weight="bold"), text_color="#1e2022")
-        logs_label.pack(pady=15, padx=20, anchor="w")
+        logs_label = ctk.CTkLabel(self.logs_frame, text="Execution Logs", font=ctk.CTkFont(family="Inter", size=18, weight="bold"), text_color="#111827")
+        logs_label.pack(pady=(20, 15), padx=25, anchor="w")
         
-        self.log_textbox = ctk.CTkTextbox(self.logs_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=12), fg_color="#f8f9fa", text_color="#333333", corner_radius=4, border_width=1, border_color="#e0e0e0")
-        self.log_textbox.pack(expand=True, fill="both", padx=20, pady=(0, 20))
+        self.log_textbox = ctk.CTkTextbox(self.logs_frame, wrap="word", state="disabled", font=ctk.CTkFont(family="Consolas", size=13), fg_color="#111827", text_color="#e5e7eb", corner_radius=8)
+        self.log_textbox.pack(expand=True, fill="both", padx=25, pady=(0, 25))
         
-        self.log_textbox.tag_config("running", foreground="#569cd6") # VSCode Blue
-        self.log_textbox.tag_config("completed", foreground="#4ec9b0") # VSCode Green
-        self.log_textbox.tag_config("waiting", foreground="#ce9178") # VSCode Orange/Red
+        self.log_textbox.tag_config("running", foreground="#60a5fa") # Blue
+        self.log_textbox.tag_config("completed", foreground="#34d399") # Green
+        self.log_textbox.tag_config("waiting", foreground="#fbbf24") # Yellow
 
     def create_stat_card(self, parent, title, value, col, highlight_color):
-        card = ctk.CTkFrame(parent, fg_color="white", corner_radius=6, border_width=1, border_color="#e0e0e0")
+        card = ctk.CTkFrame(parent, fg_color="white", corner_radius=12, border_width=1, border_color="#e5e7eb")
         card.grid(row=0, column=col, padx=10, pady=10, sticky="ew")
         
-        title_lbl = ctk.CTkLabel(card, text=title, text_color="#6c757d", font=ctk.CTkFont(family="Inter", size=13, weight="bold"))
-        title_lbl.pack(pady=(15, 0), padx=15, anchor="w")
+        # Add a subtle top border indicator for highlight color
+        indicator = ctk.CTkFrame(card, fg_color=highlight_color, height=4, corner_radius=0)
+        indicator.pack(fill="x", side="top", pady=0)
         
-        value_lbl = ctk.CTkLabel(card, text=value, font=ctk.CTkFont(family="Inter", size=32, weight="bold"), text_color="#1e2022")
-        value_lbl.pack(pady=(5, 15), padx=15, anchor="w")
+        title_lbl = ctk.CTkLabel(card, text=title, text_color="#6b7280", font=ctk.CTkFont(family="Inter", size=14, weight="bold"))
+        title_lbl.pack(pady=(15, 0), padx=20, anchor="w")
+        
+        value_lbl = ctk.CTkLabel(card, text=value, font=ctk.CTkFont(family="Inter", size=38, weight="bold"), text_color="#111827")
+        value_lbl.pack(pady=(5, 20), padx=20, anchor="w")
         return value_lbl
 
     def update_data(self):

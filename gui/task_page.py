@@ -9,7 +9,7 @@ class TaskPage(ctk.CTkFrame):
         self.nav_callback = nav_callback
         
         # Title
-        title_label = ctk.CTkLabel(self, text="📝 Task Management", font=ctk.CTkFont(family="Roboto", size=24, weight="bold"))
+        title_label = ctk.CTkLabel(self, text="📝 Task Management", font=ctk.CTkFont(family="Inter", size=24, weight="bold"), text_color="#111827")
         title_label.pack(pady=(30, 10), padx=30, anchor="w")
         
         # Tabs for Add and Manage
@@ -42,16 +42,16 @@ class TaskPage(ctk.CTkFrame):
         ]
         
         for i, (label_text, key, default) in enumerate(fields):
-            lbl = ctk.CTkLabel(form_frame, text=label_text)
+            lbl = ctk.CTkLabel(form_frame, text=label_text, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), text_color="#374151")
             lbl.grid(row=i, column=0, padx=20, pady=10, sticky="w")
             
-            entry = ctk.CTkEntry(form_frame, placeholder_text=f"Enter {key}")
+            entry = ctk.CTkEntry(form_frame, placeholder_text=f"Enter {key}", font=ctk.CTkFont(family="Inter", size=14))
             entry.insert(0, default)
             entry.grid(row=i, column=1, padx=20, pady=10, sticky="ew")
             self.entries[key] = entry
             
         # Add Button
-        add_btn = ctk.CTkButton(form_frame, text="➕ Add Task", height=40, font=ctk.CTkFont(weight="bold"), command=self.add_task)
+        add_btn = ctk.CTkButton(form_frame, text="➕ Add Task", height=42, corner_radius=8, font=ctk.CTkFont(family="Inter", size=15, weight="bold"), fg_color="#4f46e5", hover_color="#4338ca", text_color="white", command=self.add_task)
         add_btn.grid(row=len(fields), column=0, columnspan=2, pady=30)
 
     def add_task(self):
@@ -104,12 +104,12 @@ class TaskPage(ctk.CTkFrame):
         
         self.search_var = ctk.StringVar()
         self.search_var.trace_add("write", lambda *args: self.refresh_table())
-        search_entry = ctk.CTkEntry(top_bar, placeholder_text="Search tasks...", textvariable=self.search_var, width=200)
+        search_entry = ctk.CTkEntry(top_bar, placeholder_text="Search tasks...", textvariable=self.search_var, width=200, font=ctk.CTkFont(family="Inter"))
         search_entry.pack(side="left", padx=(0, 10))
         
-        ctk.CTkLabel(top_bar, text="Sort by:").pack(side="left", padx=(10, 5))
+        ctk.CTkLabel(top_bar, text="Sort by:", font=ctk.CTkFont(family="Inter", size=13, weight="bold")).pack(side="left", padx=(10, 5))
         self.sort_var = ctk.StringVar(value="Arrival Time")
-        sort_dropdown = ctk.CTkOptionMenu(top_bar, values=["Arrival Time", "Priority", "Deadline"], variable=self.sort_var, command=lambda _: self.refresh_table())
+        sort_dropdown = ctk.CTkOptionMenu(top_bar, values=["Arrival Time", "Priority", "Deadline"], variable=self.sort_var, command=lambda _: self.refresh_table(), font=ctk.CTkFont(family="Inter", weight="bold"), fg_color="#f3f4f6", text_color="#111827", button_color="#e5e7eb", button_hover_color="#d1d5db", dropdown_fg_color="#ffffff", dropdown_text_color="#111827")
         sort_dropdown.pack(side="left")
 
         # Scrollable Frame for Table
@@ -136,7 +136,7 @@ class TaskPage(ctk.CTkFrame):
         # Headers
         headers = ["ID", "Name", "Pri", "Exec", "Dead", "Arr", "Status", "Actions"]
         for col, h in enumerate(headers):
-            lbl = ctk.CTkLabel(self.table_frame, text=h, font=ctk.CTkFont(weight="bold"))
+            lbl = ctk.CTkLabel(self.table_frame, text=h, font=ctk.CTkFont(family="Inter", size=14, weight="bold"), text_color="#374151")
             lbl.grid(row=0, column=col, padx=10, pady=5, sticky="w")
             
         tasks = list(self.engine.tasks.values())
