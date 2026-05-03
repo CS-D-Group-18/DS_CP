@@ -20,6 +20,16 @@ class SimulationEngine:
         self.completed_tasks = []
         self.execution_log = []          # Stores chronological events
 
+    def reset(self):
+        """Resets the engine state and the underlying DAG manager."""
+        self.tasks.clear()
+        self.dag_manager.reset()
+        self.completed_tasks.clear()
+        self.execution_log.clear()
+        self.current_time = 0
+        self.last_aging_time = 0
+        self.heap = None
+
     def add_task(self, task, dependencies=None):
         """
         Registers a task in the system and sets up its dependencies.
@@ -129,9 +139,18 @@ class SimulationEngine:
         # Track which tasks haven't been added to the heap yet
         unstarted_task_ids = set(self.tasks.keys())
         
-        # Reset time for fresh run
+        # Reset metrics and logs for a fresh run
+        self.completed_tasks.clear()
+        self.execution_log.clear()
         self.current_time = 0
         self.last_aging_time = 0
+        
+        # Restore in-degrees for all tasks before starting
+        self.dag_manager.in_degree = {t: 0 for t in self.tasks}
+        for u, neighbors in self.dag_manager.adj_list.items():
+            for v in neighbors:
+                if v in self.dag_manager.in_degree:
+                    self.dag_manager.in_degree[v] += 1
         
         while unstarted_task_ids or not self.heap.is_empty():
             

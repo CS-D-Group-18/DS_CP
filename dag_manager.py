@@ -21,7 +21,7 @@ class DAGManager:
         """
         Helper method to initialize empty graph structures for a new task.
         """
-        if task_id not in self.all_tasks:
+        if task_id not in self.all_tasks or task_id not in self.adj_list:
             self.adj_list[task_id] = []
             self.in_degree[task_id] = 0
             self.all_tasks.add(task_id)
@@ -51,6 +51,12 @@ class DAGManager:
         if from_id in self.adj_list and to_id in self.adj_list[from_id]:
             self.adj_list[from_id].remove(to_id)
             self.in_degree[to_id] -= 1
+
+    def reset(self):
+        """Resets the engine state and the underlying DAG manager."""
+        self.adj_list.clear()
+        self.in_degree.clear()
+        self.all_tasks.clear()
 
     def get_ready_tasks(self):
         """

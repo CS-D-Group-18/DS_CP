@@ -114,26 +114,47 @@ class DashboardPage(ctk.CTkFrame):
         self.log_textbox.configure(state="disabled")
 
     def load_demo_data(self):
-        """Loads a proper example to generate reports immediately."""
+        """Loads a comprehensive Enterprise Cloud Deployment example."""
         from task import Task
-        # Clear existing
-        self.engine.tasks.clear()
-        self.engine.dag_manager.adj_list.clear()
-        self.engine.dag_manager.in_degree.clear()
+        # Properly reset the engine and DAG state
+        self.engine.reset()
         
-        # Add tasks
-        self.engine.add_task(Task("T1", "Database Backup", 1, 4, 15, 0))
-        self.engine.add_task(Task("T2", "API Request", 2, 2, 5, 1))
-        self.engine.add_task(Task("T3", "Process Images", 3, 5, 20, 2))
-        self.engine.add_task(Task("T4", "Send Emails", 2, 3, 0, 3))
-        self.engine.add_task(Task("T5", "Generate Report", 1, 6, 25, 4))
+        # 1. Infrastructure Tasks
+        self.engine.add_task(Task("INF-101", "Provision Cloud VPC", 1, 5, 20, 0))
+        self.engine.add_task(Task("INF-102", "Configure Firewall", 2, 3, 25, 0))
         
-        # Add dependencies
-        self.engine.dag_manager.add_dependency("T1", "T5")
-        self.engine.dag_manager.add_dependency("T2", "T3")
-        self.engine.dag_manager.add_dependency("T3", "T5")
+        # 2. Database & Storage (Depends on Infra)
+        self.engine.add_task(Task("DB-201", "Setup PostgreSQL Cluster", 2, 6, 30, 2))
+        self.engine.add_task(Task("STR-202", "S3 Bucket Provisioning", 3, 2, 35, 2))
         
-        # Run simulation
+        # 3. Application Builds (Can start early but needs infra)
+        self.engine.add_task(Task("APP-301", "Build Backend Image", 3, 8, 40, 0))
+        self.engine.add_task(Task("APP-302", "Compile Frontend Assets", 4, 4, 40, 0))
+        
+        # 4. Deployment & Testing
+        self.engine.add_task(Task("DEP-401", "Stage Deploy", 2, 4, 50, 5))
+        self.engine.add_task(Task("TST-402", "Run Integration Tests", 1, 10, 70, 5))
+        self.engine.add_task(Task("PRD-501", "Production Rollout", 1, 5, 100, 10))
+        
+        # Define Dependencies
+        # Infrastructure must be ready for DB and Firewall
+        self.engine.dag_manager.add_dependency("INF-101", "DB-201")
+        self.engine.dag_manager.add_dependency("INF-101", "INF-102")
+        
+        # Deploy depends on DB, Firewall, and Builds
+        self.engine.dag_manager.add_dependency("DB-201", "DEP-401")
+        self.engine.dag_manager.add_dependency("INF-102", "DEP-401")
+        self.engine.dag_manager.add_dependency("APP-301", "DEP-401")
+        self.engine.dag_manager.add_dependency("APP-302", "DEP-401")
+        
+        # Testing depends on Staging
+        self.engine.dag_manager.add_dependency("DEP-401", "TST-402")
+        
+        # Production depends on Testing and S3 Storage
+        self.engine.dag_manager.add_dependency("TST-402", "PRD-501")
+        self.engine.dag_manager.add_dependency("STR-202", "PRD-501")
+        
+        # Run simulation with default Priority algorithm
         self.engine.run("Priority")
         self.update_data()
         self.nav_callback("reports")
