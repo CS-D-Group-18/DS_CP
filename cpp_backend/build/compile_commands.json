@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/task.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/task.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/task.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/task.cpp.o"
+},
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/dag_manager.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/dag_manager.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/dag_manager.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/dag_manager.cpp.o"
+},
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/heap.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/heap.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/heap.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/heap.cpp.o"
+},
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/scheduler.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/scheduler.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/scheduler.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/scheduler.cpp.o"
+},
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/report.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/report.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/report.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/report.cpp.o"
+},
+{
+  "directory": "/home/ayush/College/DS_SEM_4/cpp_backend/build",
+  "command": "/usr/bin/c++ -DASIO_STANDALONE -DCROW_DISABLE_STATIC_DIR -I/home/ayush/College/DS_SEM_4/cpp_backend/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/crow-src/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/asio-src/asio/include -I/home/ayush/College/DS_SEM_4/cpp_backend/build/_deps/json-src/include -O3 -DNDEBUG -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/scheduler_server.dir/src/main.cpp.o -c /home/ayush/College/DS_SEM_4/cpp_backend/src/main.cpp",
+  "file": "/home/ayush/College/DS_SEM_4/cpp_backend/src/main.cpp",
+  "output": "CMakeFiles/scheduler_server.dir/src/main.cpp.o"
+}
+]
